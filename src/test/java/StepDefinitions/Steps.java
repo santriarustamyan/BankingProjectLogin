@@ -20,9 +20,8 @@ public class Steps {
     CustomersPage customersPage;
     AssertsForCustomersPage assertsForCustomersPage;
 
-
-    @Given("I am open the login page")
-    public void i_am_open_the_login_page() {
+    @Given("I am on the Login page")
+    public void i_am_on_the_login_page() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.get("https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login");
@@ -34,8 +33,8 @@ public class Steps {
         homePage.clickBtnBankManagerLogin();
     }
 
-    @When("I click on Add Customer button and added new customer")
-    public void i_click_on_add_customer_button_and_added_new_customer() {
+    @When("I click on Add Customer button")
+    public void i_click_on_add_customer_button() {
         managerPage = new BankManagerPage(driver);
         addCustomerPage = new AddCustomerPage(driver);
 
@@ -48,8 +47,8 @@ public class Steps {
         addCustomerPage.acceptAlert();
     }
 
-    @When("I clicked on the Customers")
-    public void i_clicked_on_the_customers() {
+    @When("I click on the Customers")
+    public void i_click_on_the_customers() {
         managerPage.clickBtnCustomers();
     }
 
@@ -59,8 +58,8 @@ public class Steps {
         customersPage.searchCustomer(addCustomerPage.firstName);
     }
 
-    @When("I was convinced the customer was added with the correct info")
-    public void i_was_convinced_the_customer_was_added_with_the_correct_info() {
+    @When("Assert that customer is added with correct info")
+    public void assert_that_customer_is_added_with_correct_info() {
         assertsForCustomersPage = new AssertsForCustomersPage(driver) ;
         assertsForCustomersPage.customerIsAdded(addCustomerPage.firstName);
     }
@@ -70,8 +69,8 @@ public class Steps {
         customersPage.deleteCustomer();
     }
 
-    @Then("I was convinced customer is deleted")
-    public void i_was_convinced_customer_is_deleted() {
+    @Then("Assert customer is deleted")
+    public void assert_customer_is_deleted() {
         assertsForCustomersPage.customerIsDeleted();
     }
 }
